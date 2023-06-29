@@ -1,3 +1,5 @@
+"use client";
+
 import { getQueryClient } from "@/utils";
 import { QueryClientProvider } from "react-query";
 
