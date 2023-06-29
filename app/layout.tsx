@@ -1,4 +1,4 @@
-import { ReactQueryProvider } from "@/components";
+import { ReactQueryProvider } from "@/components/context-providers";
 import "./globals.css";
 
 export const metadata = {
