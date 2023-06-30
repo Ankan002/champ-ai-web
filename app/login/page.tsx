@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const LoginPage = () => {
 	return (
-		<main className="w-full min-h-screen flex flex-col lg:bg-gradient-to-r lg:from-secondary-yellow  lg:to-primary-light bg-primary-light">
+		<main className="w-full min-h-screen flex flex-col bg-primary-light">
 			<div className="w-full h-screen flex items-center">
 				<Image
 					src={LoginHero.src}
