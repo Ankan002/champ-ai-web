@@ -1,6 +1,7 @@
 import LoginHero from "@/assets/images/login-hero.jpg";
 import LoginKeyImage from "@/assets/images/login-key.png";
 import { Logo } from "@/components/elements";
+import { LoginButton } from "@/components/login";
 import Image from "next/image";
 
 const LoginPage = () => {
@@ -34,6 +35,8 @@ const LoginPage = () => {
 						<p className="text-xl font-quicksand text-center tracking-widest mt-4 lg:w-full sm:w-2/3 w-full">
 							{"Let's"} embrace the magic and power of knowledge
 						</p>
+
+						<LoginButton />
 					</div>
 				</div>
 			</div>
