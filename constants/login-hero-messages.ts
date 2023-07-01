@@ -21,4 +21,4 @@ export const loginHeroMessages: Array<LoginHeroMessage> = [
 	},
 ];
 
-export const typingMessage = "T hermo Dynamics in 100 words."
+export const typingMessage = "Thermo Dynamics in 100 words."
