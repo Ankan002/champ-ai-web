@@ -1,4 +1,11 @@
-export const messages = [
+export interface LoginHeroMessage {
+	id: number;
+	text: string;
+	sender: "user" | "AI";
+	senderImage: string;
+}
+
+export const loginHeroMessages: Array<LoginHeroMessage> = [
 	{
 		id: 0,
 		text: "Thermo Dynamics in 100 words.",
@@ -14,4 +21,4 @@ export const messages = [
 	},
 ];
 
-export const typingMessage = "T hermo Dynamics in 100 words."
+export const typingMessage = "Thermo Dynamics in 100 words."
