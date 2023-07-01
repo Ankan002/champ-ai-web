@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui";
+import { Button, Skeleton } from "@/components/ui";
 import { HeroMessage } from "../elements";
 import { HeroAnimationNavbar } from "../hero-animation-navbar";
 import { useEffect, useState } from "react";
@@ -12,6 +12,7 @@ import {
 import { sleep } from "@/utils";
 import { Send } from "lucide-react";
 import { useTypewriter } from "react-simple-typewriter";
+import Image from "next/image";
 
 const LoginHeroAnimation = () => {
 	const [messages, setMessages] = useState<Array<LoginHeroMessage>>([]);
@@ -30,7 +31,7 @@ const LoginHeroAnimation = () => {
 			setMessages((prev) => [...prev, loginHeroMessages[0]]);
 
 		setIsAnswering(true);
-		await sleep(2000);
+		await sleep(3000);
 		setIsAnswering(false);
 
 		if (loginHeroMessages[1])
@@ -53,6 +54,22 @@ const LoginHeroAnimation = () => {
 						{messages.map((message) => (
 							<HeroMessage key={message.id} message={message} />
 						))}
+
+						{isAnswering && (
+							<div
+								className="w-full my-1 flex items-end mt-3 mb-3"
+							>
+								<Image
+									src="https://api.dicebear.com/6.x/bottts/png?seed=bot"
+									width={40}
+									height={40}
+									alt="image"
+									className="w-8 h-8 p-1 border border-primary-dark mx-1 rounded-full"
+								/>
+
+								<Skeleton className="w-[75%] h-32 rounded-lg bg-light-grey shadow-lg shadow-primary-dark/30" />
+							</div>
+						)}
 					</div>
 				</div>
 

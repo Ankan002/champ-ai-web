@@ -10,10 +10,9 @@ const HeroMessage = (props: Props) => {
 
 	return (
 		<div
-			key={message.id}
 			className={`w-full my-1 flex items-end ${
 				message.sender === "user" ? "flex-row-reverse" : "flex-row"
-			} mt-auto mb-3`}
+			} ${message.id === 0 ? "mt-auto" : "mt-3"} mb-3`}
 		>
 			<Image
 				src={message.senderImage}
@@ -23,7 +22,7 @@ const HeroMessage = (props: Props) => {
 				className="w-8 h-8 p-1 border border-primary-dark mx-1 rounded-full"
 			/>
 
-			<div className="border border-primary-dark max-w-[75%] px-2 py-1 font-quicksand text-lg rounded-lg bg-secondary-light shadow-md shadow-primary-dark/30">
+			<div className="max-w-[75%] px-2 py-1 font-quicksand text-lg rounded-lg bg-secondary-light shadow-md shadow-primary-dark/40">
 				{message.text}
 			</div>
 		</div>
