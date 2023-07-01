@@ -1,15 +1,22 @@
 "use client";
 
-import { Button, Input } from "@/components/ui";
-import { MacAnimationBtn } from "../elements";
+import { Button } from "@/components/ui";
+import { HeroMessage } from "../elements";
 import { HeroAnimationNavbar } from "../hero-animation-navbar";
 import { useEffect, useState, useRef } from "react";
-import { typingMessage } from "@/constants/login-hero-messages";
+import {
+	typingMessage,
+	loginHeroMessages,
+	LoginHeroMessage,
+} from "@/constants/login-hero-messages";
 import { sleep } from "@/utils";
 import { Send } from "lucide-react";
 
 const LoginHeroAnimation = () => {
 	const [typedMessage, setTypedMessage] = useState<string>("");
+	const [messages, setMessages] = useState<Array<LoginHeroMessage>>([]);
+	const [currentMessagePos, setMessageCurrentPos] = useState(-1);
+	const [isAnswering, setIsAnswering] = useState<boolean>(false);
 	const isMounted = useRef<boolean>(false);
 
 	const showTypingMessage = async () => {
@@ -23,9 +30,27 @@ const LoginHeroAnimation = () => {
 				);
 			} else {
 				setTypedMessage("");
+				setMessageCurrentPos(0);
 			}
 			currentPos++;
 			await sleep(100);
+		}
+	};
+
+	const addMessage = async () => {
+		if (currentMessagePos < 0) return;
+
+		if (
+			currentMessagePos % 2 === 0 &&
+			loginHeroMessages[currentMessagePos]
+		) {
+			setMessages([...messages, loginHeroMessages[currentMessagePos]]);
+			setMessageCurrentPos((prev) => prev + 1);
+		} else if (loginHeroMessages[currentMessagePos]) {
+			setIsAnswering(true);
+			await sleep(2000);
+			setIsAnswering(false);
+			setMessages([...messages, loginHeroMessages[currentMessagePos]]);
 		}
 	};
 
@@ -36,21 +61,31 @@ const LoginHeroAnimation = () => {
 		showTypingMessage();
 	}, []);
 
+	useEffect(() => {
+		addMessage();
+	}, [currentMessagePos]);
+
+	useEffect(() => {
+		console.log(messages);
+	}, [messages]);
+
 	return (
-		<div className="flex-1 w-full h-96 flex flex-col border-2 rounded-md border-primary-dark shadow-lg shadow-primary-dark/40">
-			<div className="flex justify-end px-2 py-2 border-b-2 bg-secondary-light rounded-md border-b-primary-dark">
-				<MacAnimationBtn backgroundColor="bg-primary-green" />
-				<MacAnimationBtn backgroundColor="bg-primary-yellow" />
-				<MacAnimationBtn backgroundColor="bg-primary-red" />
-			</div>
+		<div className="flex-1 w-full h-96 flex flex-col bg-secondary-light rounded-md">
 
 			<HeroAnimationNavbar />
 
-			<div className="flex-1 flex flex-col">
-				<div className="flex-grow overflow-y-scroll"></div>
-				<div className="flex px-2 py-1.5">
+			<div className="flex-1 w-full flex flex-col overflow-scroll">
+				<div className="flex-1 h-full w-full flex overflow-scroll">
+					<div className="flex-1 px-3 w-full flex flex-col py-2">
+						{messages.map((message) => (
+							<HeroMessage key={message.id} message={message} />
+						))}
+					</div>
+				</div>
+
+				<div className="flex px-2 py-1.5 w-full">
 					<input
-						className="bg-secondary-light border-2 border-black flex-grow focus:outline-none text-lg font-quicksand px-2 py-1 rounded-md tracking-wider mr-1"
+						className="bg-secondary-light border border-black flex-grow focus:outline-none text-lg font-quicksand px-2 py-1 rounded-md tracking-wider mr-1"
 						aria-label="message"
 						disabled={true}
 						value={typedMessage}

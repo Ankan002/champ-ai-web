@@ -1,1 +1,1 @@
-export * from "./mac-animation-btn";
+export * from "./hero-message";

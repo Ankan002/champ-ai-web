@@ -7,8 +7,8 @@ import Image from "next/image";
 const LoginPage = () => {
 	return (
 		<main className="w-full min-h-screen flex flex-col bg-primary-light">
-			<div className="w-full h-screen flex items-center">
-				<div className="w-1/2 h-screen px-5 py-8 lg:flex lg:flex-col hidden">
+			<div className="w-full h-screen flex items-center flex-row-reverse">
+				<div className="w-1/2 h-screen lg:flex lg:flex-col hidden">
 					<LoginHeroAnimation />
 				</div>
 				<div className="flex-1 h-screen flex flex-col px-5">
