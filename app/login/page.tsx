@@ -1,20 +1,16 @@
-import LoginHero from "@/assets/images/login-hero.jpg";
+// import LoginHero from "@/assets/images/login-hero.jpg";
 import LoginKeyImage from "@/assets/images/login-key.png";
 import { Logo } from "@/components/elements";
-import { LoginButton } from "@/components/login";
+import { LoginButton, LoginHeroAnimation } from "@/components/login";
 import Image from "next/image";
 
 const LoginPage = () => {
 	return (
 		<main className="w-full min-h-screen flex flex-col bg-primary-light">
 			<div className="w-full h-screen flex items-center">
-				<Image
-					src={LoginHero.src}
-					height={1568}
-					width={960}
-					alt=""
-					className="h-full w-1/2 object-cover rounded-r-xl border-r-2 border-t-2 border-b-2 border-secondary-dark lg:block hidden"
-				/>
+				<div className="w-1/2 h-screen px-5 py-8 lg:flex lg:flex-col hidden">
+					<LoginHeroAnimation />
+				</div>
 				<div className="flex-1 h-screen flex flex-col px-5">
 					<div className="flex pt-3">
 						<Logo />
