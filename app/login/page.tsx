@@ -13,7 +13,7 @@ const LoginPage = () => {
 					height={1568}
 					width={960}
 					alt=""
-					className="h-full w-7/12 object-cover rounded-r-xl border-r-2 border-t-2 border-b-2 border-secondary-dark lg:block hidden"
+					className="h-full w-1/2 object-cover rounded-r-xl border-r-2 border-t-2 border-b-2 border-secondary-dark lg:block hidden"
 				/>
 				<div className="flex-1 h-screen flex flex-col px-5">
 					<div className="flex pt-3">
