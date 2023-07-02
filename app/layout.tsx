@@ -1,9 +1,13 @@
-import { ReactQueryProvider } from "@/components/context-providers";
+import {
+	GoogleLoginProvider,
+	ReactQueryProvider,
+} from "@/components/context-providers";
 import "./globals.css";
 
 export const metadata = {
 	title: "Champ AI",
-	description: "A single app that can help you answer all questions to assist in your learning!!",
+	description:
+		"A single app that can help you answer all questions to assist in your learning!!",
 };
 
 export default function RootLayout({
@@ -14,7 +18,9 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<ReactQueryProvider>{children}</ReactQueryProvider>
+				<ReactQueryProvider>
+					<GoogleLoginProvider>{children}</GoogleLoginProvider>
+				</ReactQueryProvider>
 			</body>
 		</html>
 	);
